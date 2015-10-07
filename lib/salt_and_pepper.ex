@@ -1,0 +1,2 @@
+defmodule SaltAndPepper do
+end
