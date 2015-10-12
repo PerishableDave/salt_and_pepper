@@ -20,12 +20,12 @@ defmodule SaltAndPepper.Service.APNS.Connection do
     {:ok, %{state | socket: socket}}
   end
 
-  def handle_cast({:send, message}, %{socket: socket}) do
-    :ok = :gen_tcp(socket, message)
+  def handle_cast({:send, message}, %{socket: socket} = state) do
+    :ok = :gen_tcp.send(socket, message)
     {:noreply, state}
   end
 
-  def handle_info({:tcp, socket, msg}, %{socket: socket, queue: queue}) do
+  def handle_info({:tcp, socket, msg}, %{socket: socket} = state) do
 
   end
 end
