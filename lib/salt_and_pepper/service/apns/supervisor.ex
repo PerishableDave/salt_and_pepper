@@ -9,7 +9,7 @@ defmodule SaltAndPepper.Service.APNS.Supervisor do
 
   def init(opts) do
     children = [
-      # worker(Pool, opts)
+      worker(Pool, opts)
     ]
     supervise(children, strategy: :one_for_one)
   end

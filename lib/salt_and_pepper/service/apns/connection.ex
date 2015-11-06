@@ -1,15 +1,17 @@
 defmodule SaltAndPepper.Service.APNS.Connection do
   use GenServer
 
+  @behaviour :poolboy_worker
+
   @apns_server "gateway.sandbox.push.apple.com"
   @apns_port 2195
 
-  def start_link do
+  def start_link(_opts) do
     GenServer.start_link(__MODULE__, %{socket: nil})
   end
 
-  def send(payload) do
-    GenServer.cast({:send, payload})
+  def send_message(conn, payload) do
+    GenServer.cast(conn, {:send, payload})
   end
 
   # Callbacks

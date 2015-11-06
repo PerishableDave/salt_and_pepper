@@ -27,6 +27,7 @@ defmodule SaltAndPepper.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:poison, "~> 1.5.0"}]
+    [{:poison, "~> 1.5.0"},
+     {:poolboy, "~> 1.5.1"}]
   end
 end
